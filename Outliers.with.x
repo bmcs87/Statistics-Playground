@@ -41,7 +41,7 @@ x.outlier <- (filter(dataset, x.outlier==TRUE))
 
 #Name X-Outlier
 x.id.outlier <- which(dataset$x.outlier == TRUE, arr.ind=TRUE)
-print(id.outlier)
+print(x.id.outlier)
 
 #Remove X-Outlier
 dataset <- dataset[-c(x.id.outlier),]
