@@ -1,0 +1,28 @@
+# EDIT LOCATION FILE SAVED HERE (example: "C:/Users/resmi/Documents")
+setwd("C:/Users/resmi/Documents")
+
+# Call your dataset
+dataset <- read.delim("dataset.txt", quote = "")
+attach(dataset)
+
+#UPDATE THE X & Y AXIS NAMES
+x <- dataset$Clicks
+y <- dataset$Impressions
+
+colnames(dataset) <- c("x", "y")
+
+#Install and Call Caret Package
+install.packages("caret", repos = "http://cran.us.r-project.org")
+library(caret)
+
+# Run the heteroscedasticity transformation using the BoxCox method
+yBCMod <- BoxCoxTrans(dataset$y)
+
+#Apply the transformed variable to a new dataframe
+dataset2 <- cbind(dataset, y_new=predict(yBCMod), dataset$y)
+
+#Build the new regression model with the transformed data
+lmMod_bc <- lm(y_new ~ x, data=dataset)
+
+#Plot the model
+plot(lmMod_bc)
