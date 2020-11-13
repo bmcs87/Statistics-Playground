@@ -1,0 +1,19 @@
+# EDIT LOCATION FILE SAVED HERE (example: "C:/Users/resmi/Documents")
+setwd("C:/LOCATION NAME")
+
+# Call your dataset
+dataset <- read.delim("dataset.txt", quote = "")
+attach(dataset)
+
+#Select variables to test (numeric only). You can add as many variables as desired by using quotes and separating them with commas. Column names are case sensitive! PLEASE REMEMBER TO ADD A PERIOD '.' BETWEEN AXIS NAME SPACE ("NonBrand.Clicks")
+cor.vars <- c("X1", "X2", "X3")
+
+#Install and call packages
+pkgs <- c("corrplot")
+install.packages(pkgs, repos = "http://cran.us.r-project.org")
+library(corrplot)
+ 
+#Correlation using Pearson method of all numeric variables. The method is set to pearson, but you may switch with "kendall" or "spearman".
+cor.df <- data.frame(dataset)
+cor1 <- cor(subset(cor.df, select = cor.vars), method = c("pearson"))
+corrplot.mixed(cor1,  tl.col = "red", lower.col = "black",number.cex = .7,tl.cex=0.7)
