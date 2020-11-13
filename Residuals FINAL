@@ -1,0 +1,16 @@
+# EDIT LOCATION FILE SAVED HERE (example: "C:/Users/resmi/Documents")
+setwd("C:/LOCATION SAVED")
+
+# Call your dataset
+dataset <- read.delim("dataset.txt", quote = "")
+attach(dataset)
+
+#UPDATE THE X & Y AXIS NAMES; PLEASE REMEMBER TO ADD A PERIOD '.' BETWEEN AXIS NAME SPACE ("NonBrand.Clicks") & AXIS NAMES ARE CASE SENSITIVE ("NonBrand.Clicks" is different from "nonbrand.clicks")
+x <- dataset$X AXIS NAME
+y <- dataset$Y AXIS NAME
+
+#Create the fitted data
+fit <- lm(y ~ x)
+
+#Plot the fitted data
+plot(fit, which=1)
