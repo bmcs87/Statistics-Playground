@@ -14,7 +14,9 @@ colnames(dataset)[colnames(dataset) %in% c("X AXIS NAME", "Y AXIS NAME")] <- c("
 
 #Install and Call Caret Package
 install.packages("caret", repos = "http://cran.us.r-project.org")
+install.packages("e1071", repos = "http://cran.us.r-project.org")
 library(caret)
+library(e1071)
 
 # Run the heteroscedasticity transformation using the BoxCox method
 BCMod <- BoxCoxTrans(y)
