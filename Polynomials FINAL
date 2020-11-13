@@ -1,0 +1,23 @@
+# EDIT LOCATION FILE SAVED HERE (example: "C:/Users/resmi/Documents")
+setwd("C:/LOCATION NAME")
+
+# Call your dataset
+dataset <- read.delim("dataset.txt", quote = "")
+attach(dataset)
+
+#UPDATE THE X & Y AXIS NAMES; PLEASE REMEMBER TO ADD A PERIOD '.' BETWEEN AXIS NAME SPACE ("NonBrand.Clicks") & AXIS NAMES ARE CASE SENSITIVE ("NonBrand.Clicks" is different from "nonbrand.clicks")
+x <- dataset$X AXIS NAME
+y <- dataset$Y AXIS NAME
+
+#Create the squared term
+x2 <- x^2
+
+#Add the term to your equation
+dataset <- lm(y ~ x + x2)
+
+#Plot the new dataset
+plot(x, fitted(lm(y ~ x + x2)))
+
+#Print new dataset out (only works in R itself)
+options(max.print = .Machine$integer.max)
+print(dataset)
