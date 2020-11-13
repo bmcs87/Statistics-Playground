@@ -1,0 +1,33 @@
+# EDIT LOCATION FILE SAVED HERE (example: "C:/Users/resmi/Documents")
+setwd("C:/LOCATION SAVED")
+
+# Call your dataset
+dataset <- read.delim("dataset.txt", quote = "")
+attach(dataset)
+
+#UPDATE THE X & Y AXIS NAMES; PLEASE REMEMBER TO ADD A PERIOD '.' BETWEEN AXIS NAME SPACE ("NonBrand.Clicks") & AXIS NAMES ARE CASE SENSITIVE ("NonBrand.Clicks" is different from "nonbrand.clicks")
+x <- dataset$X AXIS NAME
+y <- dataset$Y AXIS NAME
+
+#INPUT YOUR X & Y AXIS NAMES - MAKE SURE TO KEEP THE NAME IN QUOTES!!  This code will rename your columns.
+colnames(dataset)[colnames(dataset) %in% c("X AXIS NAME", "Y AXIS NAME")] <- c("x", "y")
+
+#Install and Call Caret Package
+install.packages("caret", repos = "http://cran.us.r-project.org")
+library(caret)
+
+# Run the heteroscedasticity transformation using the BoxCox method
+BCMod <- BoxCoxTrans(y)
+
+#Apply the transformed variable to a new dataframe
+dataset <- cbind(dataset, y_new=predict(BCMod, y))
+
+#Build the new regression model with the transformed data
+lmMod_bc <- lm(y_new ~ x, data=dataset)
+
+#Plot the model
+plot(dataset$y_new ~ dataset$x)
+
+#Print new dataset out (only works in R itself)
+options(max.print = .Machine$integer.max)
+print(dataset)
