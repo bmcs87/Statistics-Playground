@@ -1,0 +1,17 @@
+# EDIT LOCATION FILE SAVED HERE (example: "C:/Users/resmi/Documents")
+setwd("C:/LOCATION SAVED")
+
+# Call your dataset
+dataset <- read.delim("dataset.txt", quote = "")
+attach(dataset)
+
+#UPDATE THE X & Y AXIS NAMES; PLEASE REMEMBER TO ADD A PERIOD '.' BETWEEN AXIS NAME SPACE ("NonBrand.Clicks") & AXIS NAMES ARE CASE SENSITIVE ("NonBrand.Clicks" is different from "nonbrand.clicks")
+x <- dataset$X AXIS NAME
+y <- dataset$Y AXIS NAME
+
+# Plot the log-log
+plot(log(y) ~ log(x))
+
+#Print new dataset out (only works in R itself)
+options(max.print = .Machine$integer.max)
+print(dataset)
