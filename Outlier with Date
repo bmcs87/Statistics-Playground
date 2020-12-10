@@ -85,13 +85,13 @@ y.outlier <- (filter(dataset, y.outlier==TRUE))
 y.id.outlier <- which(dataset$y.outlier == TRUE, arr.ind=TRUE)
 print(y.id.outlier)
 
-#Remove Y-Outlier
+#Remove Y-Outlier & Close the If / Else Statement
 dataset <- dataset[-c(y.id.outlier),]
 print(dataset)
+}
 
 #New Plot with Outliers Removed & close the If / Else statement
 plot(dataset$y ~ dataset$x)
-}
 
 #Print new dataset out (only works in R itself)
 options(max.print = .Machine$integer.max)
