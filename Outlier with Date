@@ -89,7 +89,7 @@ print(y.id.outlier)
 dataset <- dataset[-c(y.id.outlier),]
 print(dataset)
 
-#New Plot with Outliers Removed
+#New Plot with Outliers Removed & close the If / Else statement
 plot(dataset$y ~ dataset$x)
 }
 
