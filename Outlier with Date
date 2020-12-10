@@ -34,7 +34,7 @@ outlier_function<-function(data_frame, column, outlier_label_column) {
 }
 
 #Check if X-Axis is a date
-if(sapply(list(as.Date(dataset$x, format="%d %B %Y")),is.Date) = "TRUE") {
+if(sapply(list(as.Date(dataset$x, format="%d %B %Y")),is.Date)==TRUE){
 
 ######If X-Axis is a date, only run y-axis outlier check
 ######Y-Axis
